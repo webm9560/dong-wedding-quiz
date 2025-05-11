@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>民族风俗问答</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; padding: 20px; }
+        .question { font-size: 24px; color: #2c3e50; margin-bottom: 30px; }
+        button { 
+            display: block; width: 100%; padding: 15px; margin: 10px 0; 
+            font-size: 18px; background: #f8f9fa; border: 2px solid #3498db;
+            border-radius: 8px; cursor: pointer; transition: all 0.3s;
+        }
+        button:hover { background: #3498db; color: white; }
+        .result { 
+            margin-top: 20px; padding: 15px; border-radius: 8px; 
+            display: none; font-weight: bold; 
+        }
+        .correct { background: #d4edda; color: #155724; border: 2px solid #28a745; }
+        .wrong { background: #f8d7da; color: #721c24; border: 2px solid #dc3545; }
+        .explanation { margin-top: 15px; font-size: 16px; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="question">侗族婚礼一般在什么时候进行？</div>
+    <div id="options">
+        <button onclick="checkAnswer('春节')">春节</button>
+        <button onclick="checkAnswer('磨刀节')">磨刀节</button>
+        <button onclick="checkAnswer('月也')">月也</button>
+        <button onclick="checkAnswer('侗年')">侗年</button>
+    </div>
+    <div id="result" class="result"></div>
+    <div class="explanation" id="explanation"></div>
+
+    <script>
+        function checkAnswer(selected) {
+            const correct = "春节";
+            const resultDiv = document.getElementById("result");
+            const explanationDiv = document.getElementById("explanation");
+            
+            if(selected === correct) {
+                resultDiv.className = "result correct";
+                resultDiv.innerHTML = "✅ 回答正确！";
+                explanationDiv.innerHTML = "根据侗族传统习俗，婚礼多集中在春节期间举行，包含除夕'偷亲'、新娘挑水、盛大回门等特色仪式:cite[1]:cite[5]:cite[9]";
+            } else {
+                resultDiv.className = "result wrong";
+                resultDiv.innerHTML = "❌ 答案错误";
+                explanationDiv.innerHTML = `正确答案为「${correct}」。侗族婚礼多在春节期间（腊月廿六至正月初三）举行，包含以下特色流程：<br>
+                1. 除夕夜"偷亲"接新娘:cite[9]<br>
+                2. 初一新娘公开挑水亮相:cite[5]<br>
+                3. 初三浩荡送亲回门:cite[2]:cite[6]`;
+            }
+            resultDiv.style.display = "block";
+        }
+    </script>
+</body>
+</html>
